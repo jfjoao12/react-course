@@ -1,27 +1,27 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import styles from './NewPost.module.css';
+import styles from "./NewPost.module.css";
 
-function NewPost({onCancel, onAddPost}) {
-  const [enteredBody, setEnteredBody] = useState('');
-  const [enteredAuthor, setEnteredAuthor] = useState('');
+function NewPost({ onCancel, onAddPost }) {
+  const [enteredBody, setEnteredBody] = useState("");
+  const [enteredAuthor, setEnteredAuthor] = useState("");
 
   function bodyChangeHandler(event) {
-    setEnteredBody(event.target.value)
+    setEnteredBody(event.target.value);
   }
 
-    function authorChangeHandler(event) {
-    setEnteredAuthor(event.target.value)
+  function authorChangeHandler(event) {
+    setEnteredAuthor(event.target.value);
   }
 
   function submitHandler(event) {
     event.preventDefault();
     const postData = {
       body: enteredBody,
-      author: enteredAuthor
+      author: enteredAuthor,
     };
     console.log(postData);
-    onAddPost(postData)
+    onAddPost(postData);
     onCancel();
   }
 
@@ -33,10 +33,12 @@ function NewPost({onCancel, onAddPost}) {
       </p>
       <p>
         <label htmlFor="body">Text</label>
-        <textarea id="body" required rows={3} onChange={bodyChangeHandler}/>
+        <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
       </p>
       <p className={styles.actions}>
-        <button type="button" onClick={onCancel}>Cancel</button>
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
         <button>Submit</button>
       </p>
     </form>
